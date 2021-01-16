@@ -6,6 +6,18 @@ logger = logging.getLogger(__name__)
 
 playout_control = "../../scripts/playout_controls.sh"
 
+def functionCallAlsaUp(*args):
+    function_call(["/usr/bin/amixer", "set", "Master", "1+"])
+
+def functionCallAlsaDown(*args):
+    function_call(["/usr/bin/amixer", "set", "Master", "1-"])
+
+def functionCallPlayerToggle(*args):
+    function_call(["/usr/bin/mpc", "toggle"])
+
+def functionCallPlayerStop(*args):
+    function_call(["/usr/bin/mpc", "stop"])
+
 
 def functionCallShutdown(*args):
     function_call("{command} -c=shutdown".format(command=playout_control), shell=True)
